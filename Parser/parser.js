@@ -28,14 +28,14 @@ function parse(input) {
     }
     function skip_kw(kw) {
         if (is_kw(kw)) input.next();
-        else input.croak("מצפה למילה: \"" + kw + "\"");
+        else input.croak("איך קוק פאָרויס צו די וואָרט: \"" + kw + "\"");
     }
     function skip_op(op) {
         if (is_op(op)) input.next();
-        else input.croak("מצפה לסימן: \"" + op + "\"");
+        else input.croak("קוק פאָרויס צו די צייכן: \"" + op + "\"");
     }
     function unexpected() {
-        input.croak("חלק לא מובן: " + JSON.stringify(input.peek()));
+        input.croak("עטלעכע מיסאַנדערסטוד: " + JSON.stringify(input.peek()));
     }
     function maybe_binary(left, my_prec) {
         var tok = is_op();
@@ -78,7 +78,7 @@ function parse(input) {
         return name.value;
     }
     function parse_if() {
-        skip_kw("אם");
+        skip_kw("אויב");
         var cond = parse_expression();
         // if (!is_punc("{")) skip_kw("");
         var then = parse_expression();
@@ -94,10 +94,10 @@ function parse(input) {
         return ret;
     }
     function parse_while() {
-        skip_kw("כלעוד");
+        skip_kw("אימתי");
         
         var cond = parse_expression();
-        if (!is_punc("{")) skip_kw("אז");
+        if (!is_punc("{")) skip_kw("אזוי");
         var body = parse_expression();
         var ret = {
             type: "for",
@@ -123,7 +123,7 @@ function parse(input) {
         return { name: name, def: def };
     }
     function parse_var() {
-        skip_kw("מש");
+        skip_kw("בייטעוודיק");
         if (input.peek().type == "var") {
             var name = input.next().value;
             var defs = delimited("(", ")", ",", parse_vardef);
@@ -147,7 +147,7 @@ function parse(input) {
     function parse_bool() {
         return {
             type  : "bool",
-            value : input.next().value == "אמת"
+            value : input.next().value == "איימת"
         };
     }
     function maybe_call(expr) {
@@ -163,10 +163,10 @@ function parse(input) {
                 return exp;
             }
             if (is_punc("{")) return parse_prog();
-            if (is_kw("מש")) return parse_var();
-            if (is_kw("אם")) return parse_if();
-            if (is_kw("אמת") || is_kw("שקר")) return parse_bool();
-            if (is_kw("פעולה")) {
+            if (is_kw("בייטעוודיק")) return parse_var();
+            if (is_kw("אויב")) return parse_if();
+            if (is_kw("איימת") || is_kw("ליגנט")) return parse_bool();
+            if (is_kw("קאמף")) {
                 input.next();
                 return parse_method();
             }

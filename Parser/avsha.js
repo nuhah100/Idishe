@@ -7,16 +7,16 @@ const parse = require('./parser.js');
 const createEnv = function(){
   const env = new Environment();
 
-  env.def('תזמן', function(func) {
+  env.def('פלאן', function(func) {
     try {
-      console.time('תזמן');
+      console.time('פלאן');
       return func();
     } finally {
-      console.timeEnd('תזמן');
+      console.timeEnd('פלאן');
     }
   });
 
-  env.def('הדפס', console.log);
+  env.def('דרוקן', console.log);
   return env;
 };
 

@@ -1,6 +1,6 @@
 function TokenStream(input) {
     var current = null;
-    var keywords = ["אם", "אז", "אחרת", "פעולה", "אמת", "שקר",  "עבור", "כלעוד", "מש"];
+    var keywords = ["אויב", "אזוי", "אנדערע", "קאמף", "איימת", "ליגנט",  "עבור", "אימתי", "בייטעוודיק"];
     return {
         next  : next,
         peek  : peek,

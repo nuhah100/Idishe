@@ -56,35 +56,35 @@ test('Variables: string concat', (t) => {
 });
 
 test('Conditions: if true', (t) => {
-  var calc = avsha.eval("א = 6;\n אם(א==6){א=7}; \n א;");
+  var calc = avsha.eval("א = 6;\n אויב(א==6){א=7}; \n א;");
   // console.log(calc);
   t.equal(calc, 7);
   t.end();
 });
 
 test('Conditions: if false', (t) => {
-  var calc = avsha.eval("א = 6;\n אם(א==8){א=7}; \n א;");
+  var calc = avsha.eval("א = 6;\n אויב(א==8){א=7}; \n א;");
   // console.log(calc);
   t.equal(calc, 6);
   t.end();
 });
 
 test('Conditions: else true', (t) => {
-  var calc = avsha.eval("א = 6;\n אם(א==8){א=7;}אחרת{א=99;}; \n א;");
+  var calc = avsha.eval("א = 6;\n אויב(א==8){א=7;}אנדערע{א=99;}; \n א;");
   // console.log(calc);
   t.equal(calc, 99);
   t.end();
 });
 
 test('Conditions: else false', (t) => {
-  var calc = avsha.eval("א = 6;\n אם(א==8){א=7;}אחרת אם(א==8){א=99;}; \n א;");
+  var calc = avsha.eval("א = 6;\n אויב(א==8){א=7;}אנדערע אויב(א==8){א=99;}; \n א;");
   // console.log(calc);
   t.equal(calc, 6);
   t.end();
 });
 
 test('Functions: return value', (t) => {
-  var calc = avsha.eval("פעולה חיבור(ראשון,שני){ראשון+שני};\nחיבור(2,4);");
+  var calc = avsha.eval("קאמף חיבור(ראשון,שני){ראשון+שני};\nחיבור(2,4);");
   // console.log(calc);
   t.equal(calc, 6);
   t.end();

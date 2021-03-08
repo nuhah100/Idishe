@@ -10,7 +10,7 @@ function evaluate(exp, env) {
 
       case "assign":
         if (exp.left.type != "var")
-            throw new Error("לא יכול להכיל ערך ל" + JSON.stringify(exp.left));
+            throw new Error("קענען ניט אַנטהאַלטן ווערט פֿאַר" + JSON.stringify(exp.left));
         return env.def(exp.left.value, evaluate(exp.right, env));
 
       case "binary":
@@ -51,12 +51,12 @@ function evaluate(exp, env) {
 function apply_op(op, a, b) {
     function num(x) {
           if(typeof x != "number")  
-            throw new Error("מצפה למספר אבל קיבלתי " + x);
+            throw new Error("דערוואַרטן אַ נומער, אָבער איך גאַט עס " + x);
         return x;
     }
     function div(x) {
         if (num(x) == 0)
-            throw new Error("אסור לחלק באפס");
+            throw new Error("עס איז פאַרבאָטן צו טיילן דורך נול");
         return x;
     }
     switch (op) {
@@ -75,7 +75,7 @@ function apply_op(op, a, b) {
       case "==": return a === b;
       case "!=": return a !== b;
     }
-    throw new Error("לא מכיר את הסימן " + op);
+    throw new Error("צי ניט וויסן דעם צייכן " + op);
 }
 
 function make_method(env, exp) {
